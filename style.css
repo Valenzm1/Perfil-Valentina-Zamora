@@ -1,3 +1,10 @@
+/* DISEÑO GENERAL */
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #fce4ec, #eee0ff);
@@ -5,22 +12,16 @@ body {
     padding: 30px;
     color: #51365f;
 }
-main {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
+
+/* ENCABEZADO */
+
+header {
     text-align: center;
-    box-shadow: 0 10px 30px rgba(128, 75, 145, 0.18);
-    transition: transform 0.3s ease;
+    padding: 35px 20px;
+    animation: aparecer 1s ease;
 }
 
-main:hover {
-    transform: translateY(-5px);
-}
-
-img {
+header img {
     width: 160px;
     height: 160px;
     border-radius: 50%;
@@ -30,34 +31,67 @@ img {
     transition: transform 0.4s;
 }
 
-img:hover {
-    transform: scale(1.08);
-}
-h1 {
-    color: #923c83;
-    font-size: 32px;
+header img:hover {
+    transform: scale(1.08) rotate(3deg);
 }
 
-h2 {
+h1 {
+    color: #923c83;
+    font-size: 36px;
+}
+
+header h2 {
     color: #9863b5;
-    margin-top: 30px;
 }
-p, li {
-    line-height: 1.7;
+
+.frase {
+    color: #a05a91;
+    font-style: italic;
 }
+
+/* CONTENIDO PRINCIPAL */
+
+main {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(128, 75, 145, 0.18);
+}
+
+/* SECCIONES */
+
 section {
     background: #fff7fc;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 18px;
     border-left: 5px solid #d98acb;
+    animation: aparecer 0.8s ease both;
     transition: all 0.3s ease;
 }
 
 section:hover {
     background: #f9eafa;
-    transform: translateX(5px);
+    transform: translateY(-4px);
 }
+
+h2 {
+    color: #9863b5;
+    margin-top: 15px;
+}
+
+h3 {
+    color: #923c83;
+}
+
+p, li {
+    line-height: 1.8;
+}
+
+/* LISTAS */
 
 ul {
     list-style: none;
@@ -77,22 +111,167 @@ li:hover {
     transform: scale(1.03);
 }
 
+/* TARJETAS DE LOGROS */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.tarjeta {
+    background: #f4e5fa;
+    padding: 18px;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 18px rgba(150, 80, 150, 0.2);
+}
+
+/* BARRAS DE HABILIDADES */
+
+.habilidad {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.habilidad p {
+    font-weight: bold;
+    color: #80508e;
+    margin-bottom: 8px;
+}
+
+.barra {
+    height: 14px;
+    background: #eadcf2;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progreso {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #e8a6d2, #a77bd1);
+    animation: llenar 1.5s ease;
+}
+
+.pensamiento {
+    width: 85%;
+}
+
+.comunicacion {
+    width: 80%;
+}
+
+.creatividad {
+    width: 90%;
+}
+
+.tecnologia {
+    width: 75%;
+}
+
+.nota {
+    font-size: 13px;
+    color: #987da2;
+    font-style: italic;
+}
+
+/* ANIMACIONES */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes llenar {
+    from {
+        width: 0;
+    }
+}
+
+/* PIE DE PÁGINA */
+
 footer {
     color: #89518f;
     margin-top: 30px;
     padding: 15px;
+    text-align: center;
 }
 
-@media (max-width: 600px) {
+/* DISEÑO RESPONSIVE */
+
+@media (max-width: 700px) {
+
     body {
-        padding: 15px;
+        padding: 12px;
     }
 
-    main {
-        padding: 20px;
+    header {
+        padding: 25px 10px;
+    }
+
+    header img {
+        width: 135px;
+        height: 135px;
     }
 
     h1 {
-        font-size: 26px;
+        font-size: 27px;
     }
+
+    main {
+        padding: 18px;
+    }
+
+    section {
+        padding: 18px;
+        margin: 18px 0;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+}
+
+/* RESPETAR PREFERENCIAS DE MOVIMIENTO */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
 }
